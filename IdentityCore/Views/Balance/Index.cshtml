@@ -1,0 +1,490 @@
+﻿
+<style>
+    #mainheading{
+        color:white;
+    }
+    .cashimage{
+        margin-left: 50%;
+    }
+
+    .longimage{
+        margin-left: 60%;
+        margin-right: 5%
+    }
+</style>
+<h1 id="mainheading">Balances</h1></br>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body" >
+
+                <h5 class="card-title"  style="display: flex; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                    </svg>Cash Amount
+                </h5>
+                <div class="d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                    </svg>
+                <div id="cashamount">
+
+                </div>
+                    <img class="cashimage" src="~/images/dollar.png" style="width: 80px; height: 80px;" />
+                </div>
+                <a class="btn btn-primary" onclick="createCashModal();"> Deposit Funds </a>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" style="display: flex; align-items: center;">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                            <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                        </svg>Bank Balance
+                </h5>
+                <div class="d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                    </svg>
+                <div id="bankamount">
+
+                </div>
+                    <img class="cashimage" src="~/images/balance.png" style="width: 80px; height: 80px;" />
+                </div>
+@*                <a href="#" class="btn btn-primary" onclick="createBankModal();"> Deposit Funds </a>
+*@            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+
+                <h5 class="card-title" style="display: flex; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                </svg>
+                    Total Balance
+                </h5>
+                <div class="d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                    </svg>
+                <div id="totalamount">
+                </div>
+                    <img class="cashimage" src="~/images/dollar-symbol.png" style="width: 80px; height: 80px;" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+
+                <h5 class="card-title" style="display: flex; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                    </svg>Cashflow In
+                </h5>
+                <div class="d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                    </svg>
+                <div id="cashinamount">
+                </div>
+                    <img class="longimage" src="~/images/cash-payment.png" style="width: 80px; height: 80px;" />
+                </div>
+                <a href="#" class="btn btn-primary" onclick="createCashInModal();"> Deploy Funds </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" style="display: flex; align-items: center;">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                    </svg>Cashflow Out
+                </h5>
+                <div class="d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                </svg>
+                <div id="cashoutamount">
+                    
+                </div>
+                    <img class="longimage" src="~/images/administration.png" style="width: 80px; height: 80px;" />
+                </div>
+@*                <a href="#" class="btn btn-danger" onclick="createCashOutModal();">Expenditure</a>
+*@            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="modal fade modal" id="createCashBalanceWindow">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title" id="Balanceheading">Add Balance</h1>
+                <button type="button" class="btn-close" aria-label="Close" onclick="closeCashModal();"></button>
+                @* <button class="close text-danger" data-dismiss="modal">&times;</button>*@
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" class="form-control" id="popupCashAmount">
+                        </div><br /><br />
+                       
+                    </form>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="AddBalanceBTN" onclick="updateBalance('Cash');">Deposit</button>
+                <button class="btn btn-warning" id="UpdateBalanceBTN" onclick="updateBalance();" style="display:none">Update</button>
+                <button class="btn btn-danger" id="CloseBalanceBTN" onclick="closeCashModal();" style="display:none">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal" id="createBankBalanceWindow">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title" id="Balanceheading">Deposit Bank Balance</h1>
+                <button type="button" class="btn-close" aria-label="Close" onclick="closeBankModal();"></button>
+                @* <button class="close text-danger" data-dismiss="modal">&times;</button>*@
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" class="form-control" id="popupBankAmount">
+                        </div><br /><br />
+
+                    </form>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="AddBalanceBTN" onclick="updateBalance('Bank');">Deposit</button>
+                <button class="btn btn-warning" id="UpdateBalanceBTN" onclick="updateBalance();" style="display:none">Update</button>
+                <button class="btn btn-danger" id="CloseBalanceBTN" onclick="closeBankModal();" style="display:none">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal" id="createCashInBalanceWindow">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title" id="Balanceheading"> Add Amount To Projects</h1>
+                <button type="button" class="btn-close" aria-label="Close" onclick="closeCashInModal();"></button>
+                @* <button class="close text-danger" data-dismiss="modal">&times;</button>*@
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" class="form-control" id="popupCashInAmount">
+                        </div><br /><br />
+                        <div class="form-group">
+                            <label>Withdrawl</label>
+                            @* <input placeholder="Intention" id="popupIntention" class="form-control" autocomplete="off" />
+                            </div><br /><br />*@
+                            <select class="form-control" name="withdrawl" id="popupWithdrawl" autocomplete="off">
+                                <option class="dropdown-item" value="CashBalance">Cash Balance</option>
+                                <option class="dropdown-item" value="BankBalance">Bank Balance</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="AddBalanceBTN" onclick="updateBalance('CashIn');">Deposit</button>
+                <button class="btn btn-warning" id="UpdateBalanceBTN" onclick="updateBalance();" style="display:none">Update</button>
+                <button class="btn btn-danger" id="CloseBalanceBTN" onclick="closeCashModal();" style="display:none">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal" id="createCashOutBalanceWindow">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title" id="Balanceheading">Amount Paid Out</h1>
+                <button type="button" class="btn-close" aria-label="Close" onclick="closeCashOutModal();"></button>
+                @* <button class="close text-danger" data-dismiss="modal">&times;</button>*@
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" class="form-control" id="popupCashOutAmount">
+                        </div><br /><br />
+
+                    </form>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="AddBalanceBTN" onclick="updateBalance('Cashout');">Deposit</button>
+                <button class="btn btn-warning" id="UpdateBalanceBTN" onclick="updateBalance();" style="display:none">Update</button>
+                <button class="btn btn-danger" id="CloseBalanceBTN" onclick="closeBankModal();" style="display:none">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+   $(document).ready(function () {
+        BalanceShow();
+    })
+    
+    function createCashModal() {
+        cleartextbox();
+        $('#createCashBalanceWindow').modal('show');
+    }
+    function createBankModal() {
+        cleartextbox();
+        $('#createBankBalanceWindow').modal('show');
+    }
+    function createCashInModal() {
+        cleartextbox();
+        $('#createCashInBalanceWindow').modal('show');
+    }
+    function createCashOutModal() {
+        cleartextbox();
+        $('#createCashOutBalanceWindow').modal('show');
+    }
+    function closeCashModal() {
+        $('#createCashBalanceWindow').modal('hide');
+    } 
+    function closeCashInModal() {
+        $('#createCashInBalanceWindow').modal('hide');
+    } 
+    function closeCashOutModal() {
+        $('#createCashOutBalanceWindow').modal('hide');
+    }
+    function closeBankModal() {
+        $('#createBankBalanceWindow').modal('hide');
+    }
+    function cleartextbox() {
+
+        $('#popupAmount').val('');
+
+
+    }
+    var OriginalCash = 0;
+    var OriginalBank = 0;
+    var OriginalCashIn = 0;
+    var OriginalCashOut = 0;
+
+    function BalanceShow() {
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                url: '/Balance/BalanceIndex',
+                type: 'GET',
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8;',
+                success: function (result) {
+                    var object = '';
+
+                    $.each(result, function (index, item) {
+                        object += '<h1>' + item._CashBalance + '</h1>';
+                        OriginalCash = item._CashBalance;
+                    });
+                    $('#cashamount').html(object);
+                    object = '';
+
+
+                    $.each(result, function (index, item) {
+                        object += '<h1>' + item._BankBalance + '</h1>';
+                        OriginalBank = item._BankBalance;
+
+                    });
+
+                    $('#bankamount').html(object);
+                    object = '';
+                    $.each(result, function (index, item) {
+                        object += '<h1>' + item._TotalBalance + '</h1>';
+                    });
+                    $('#totalamount').html(object);
+                    object = '';
+                    $.each(result, function (index, item) {
+                        object += '<h1>' + item._MoneyGoingIn + '</h1>';
+                        OriginalCashIn = item._MoneyGoingIn;
+                    });
+                    $('#cashinamount').html(object);
+                    object = '';
+                    $.each(result, function (index, item) {
+                        object += '<h1>' + item._MoneyPaidOut + '</h1>';
+                        OriginalCashOut = item._MoneyPaidOut;
+                    });
+                    $('#cashoutamount').html(object);
+
+                    resolve(); // Resolve the promise when all AJAX requests are completed
+                },
+                error: function () {
+                    reject(); // Reject the promise if an error occurs
+                }
+            });
+        });
+    }
+    //Edit Balance
+
+    function updateBalance(parameter){
+
+    BalanceShow().then(function () {
+
+        // OriginalBank value is now updated
+        if (parameter === 'Cash') {
+            var Samount = $('#popupCashAmount').val();
+            var amount = parseFloat(Samount);
+
+            amount = OriginalCash + amount;
+
+            // Make the AJAX request with the updated values
+            $.ajax({
+                url: '/Balance/Update',
+                type: 'POST',
+                data: {
+                    _id: 1,
+                    _CashBalance: amount,
+                    _BankBalance: OriginalBank,
+                    _MoneyGoingIn: OriginalCashIn,
+                    _MoneyPaidOut: OriginalCashOut
+                },
+                success: function () {
+                    cleartextbox();
+                    BalanceShow();
+                    closeCashModal();
+                },
+                error: function () {
+                    // Handle error if needed
+                }
+            });
+        } else if (parameter === 'Bank') {
+            var Samount = $('#popupBankAmount').val();
+            var amount = parseFloat(Samount);
+
+            amount = OriginalBank + amount;
+            $.ajax({
+                url: '/Balance/Update',
+                type: 'POST',
+                data: {
+                    _id: 1,
+                    _CashBalance: OriginalCash,
+                    _BankBalance: amount,
+                    _MoneyGoingIn: OriginalCashIn,
+                    _MoneyPaidOut: OriginalCashOut
+                },
+                success: function () {
+                    cleartextbox();
+                    BalanceShow();
+                    closeBankModal();
+                },
+                error: function () {
+
+                }
+            });
+        } else if (parameter === 'CashIn') {
+                
+            var Samount = $('#popupCashInAmount').val();
+                var amount = parseFloat(Samount);
+                var flag = $('#popupWithdrawl').val();
+
+                if(flag==='CashBalance'){
+                    OriginalCash = OriginalCash - amount;
+                }else{
+                    OriginalBank = OriginalBank - amount;
+                }
+
+                amount = OriginalCashIn + amount;
+            $.ajax({
+                url: '/Balance/Update',
+                type: 'POST',
+                data: {
+                    _id: 1,
+                    _CashBalance: OriginalCash,
+                    _BankBalance: OriginalBank,
+                    _MoneyGoingIn: amount,
+                    _MoneyPaidOut: OriginalCashOut
+                },
+                success: function () {
+                    cleartextbox();
+                    BalanceShow();
+                    closeCashInModal();
+                },
+                error: function () {
+
+                }
+            });
+        } else {
+                var Samount = $('#popupCashOutAmount').val();
+                var amount = parseFloat(Samount);
+                if(amount>OriginalCashIn){
+                    alert("Entered Amount is greater than Cash added to the projects");
+                }
+                else{
+                OriginalCashIn = OriginalCashIn - amount;
+                amount = OriginalCashOut + amount;
+                $.ajax({
+                url: '/Balance/Update',
+                type: 'POST',
+                data: {
+                    _id: 1,
+                    _CashBalance: OriginalCash,
+                    _BankBalance: OriginalBank,
+                    _MoneyGoingIn: OriginalCashIn,
+                    _MoneyPaidOut: amount
+                },
+                success: function () {
+                    cleartextbox();
+                    BalanceShow();
+                    closeCashOutModal();
+                },
+                error: function () {
+
+                }
+            });
+                }
+        }
+    });
+}
+</script>

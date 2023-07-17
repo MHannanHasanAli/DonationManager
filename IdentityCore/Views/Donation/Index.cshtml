@@ -1,0 +1,567 @@
+﻿@{
+    ViewData["Title"] = "Donation";
+}
+<style>
+    .card {
+        margin-bottom: 20px;
+    }
+
+    #IconButtonEdit {
+        margin-left: 50px;
+    }
+
+    #IconButtonDel {
+        margin-left: 7px;
+    }
+
+    #mainheading {
+        color: white;
+    }
+    .white{
+        color:white;
+    }
+
+    .leftSpace {
+        margin-left: 2%;
+    }
+</style>
+<style type="text/css">
+    @@media (max-width: 767px) {
+        #mainheading {
+            text-align: center;
+        }
+
+        .col-lg-2,
+        .col-md-6,
+        .col-12 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #startdate {
+            margin-left: 0px;
+        }
+
+        .leftSpace {
+            display: none;
+        }
+    }
+
+    @@media (min-width: 992px) {
+        #mainheading {
+            text-align: left;
+            color: white;
+        }
+
+        .col-lg-2,
+        .col-md-6,
+        .col-12 {
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        #startdate {
+            margin-left: 20px;
+        }
+
+        .leftSpace {
+            margin-left: 2%;
+        }
+    }
+
+</style>
+<div class="row">
+
+
+    <div class="col-md-2">
+        <h1 id="mainheading">Donations</h1>
+    </div>
+    <div class="col-md-3">
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-9" id="startdate">
+            <input type="date" id="startingDate" class="form-control">
+        </div>
+            <div class="col-md-1 text-center" style="margin-top:5px;">
+            <h6 id="white" style="color:white;">To</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-9">
+                <input type="date" id="endingDate" class="form-control col-1">
+                </div>
+                <div class="col-md-3 text-center">
+                <button class="btn btn-sm btn-danger m-2" id="ExportDonationid" onclick="DonationExport();"> Search </button>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-6 col-12 text-md-end text-center mt-2 mt-md-0">
+        <button class="btn btn-sm btn-primary m-2" id="addDonationid">+ New Donation</button>
+                </div>
+            </div>
+        </div>
+</div>
+
+<br />
+<br />
+<div class="table_display">
+    <table class="table table-bordered" id="myTable">
+        <thead>
+            <tr class="text-center white">
+                <th>Amount</th>
+                <th>Fees</th>
+                <th>Intention</th>
+                <th>Transaction</th>
+                <th>Operations</th>
+
+            </tr>
+        </thead>
+        <tbody class="text-center white" id="table_data">
+        </tbody>
+    </table>
+    <nav id="paginationContainer">
+        <ul id="pagination" class="pagination justify-content-center"></ul>
+    </nav>
+</div>
+
+<div class="modal fade modal" id="createDonationWindow">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title text-black" id="Donationheading">Add Donation</h1>
+                <button type="button" class="btn-close" aria-label="Close" onclick="closeModal();"></button>
+                @* <button class="close text-danger" data-dismiss="modal">&times;</button>*@
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <input type="hidden" id="popupId" class="form-control" disabled="disabled" autocomplete="off" />
+                        </div>
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input placeholder="$" id="popupAmount" class="form-control" autocomplete="off"  required/>
+                        </div><br />
+                        <div class="form-group">
+                            <label>Fees($)</label>
+                            <input placeholder="It will be deducted from the above written amount" id="popupFees" required class="form-control" autocomplete="off" />
+                        </div><br />
+                        <div class="form-group">
+                            <label>Transaction</label>
+                            @* <input placeholder="Intention" id="popupIntention" class="form-control" autocomplete="off" />
+                            </div><br /><br />*@
+                            <select class="form-control" name="transactiontype" id="popuptransactiontype" autocomplete="off" required>
+                                <option class="dropdown-item" value="Cash">Cash</option>
+                                <option class="dropdown-item" value="Bank">Bank Transfer</option>
+                            </select>
+                        </div><br />
+                        <div class="form-group">
+                            <label>Intention</label>
+                           @* <input placeholder="Intention" id="popupIntention" class="form-control" autocomplete="off" />
+                        </div><br /><br />*@
+                            <select class="form-control" name="intention" id="popupIntention" autocomplete="off" required>
+                                <option class="dropdown-item" value="lillah">Lillah</option>
+                                <option class="dropdown-item" value="Sadaqah">Sadaqah</option>
+                                <option class="dropdown-item" value="Zakat">Zakat</option>
+                            </select>
+                         </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="AddDonationBTN" onclick="saveDonation();updateBalance(document.getElementById('popupAmount').value,document.getElementById('popupFees').value);">Create</button>
+                <button class="btn btn-warning" id="UpdateDonationBTN" onclick="updateDonation();" style="display:none">Update</button>
+                <button class="btn btn-danger" id="CloseDonationBTN" onclick="closeModal();" style="display:none">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+ 
+        DonationShow();
+        BalanceShow();
+              
+    });
+    var OriginalCash = 0;
+    var OriginalBank = 0;
+    var OriginalCashIn = 0;
+    var OriginalCashOut = 0;
+    var typeCatch = '';
+    
+    function BalanceShow() {
+        
+        return new Promise(function (resolve, reject) {
+ 
+            $.ajax({
+                url: '/Donation/BalanceIndex',
+                type: 'GET',
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8;',
+                success: function (result) {
+
+                    $.each(result, function (index, item) {
+
+                        OriginalCash = item._CashBalance;
+                        OriginalBank = item._BankBalance;
+                        OriginalCashIn = item._MoneyGoingIn;
+                        OriginalCashOut = item._MoneyPaidOut;
+                    });                   
+                    resolve();
+                    cleartextbox();// Resolve the promise when all AJAX requests are completed
+                },
+                error: function () {
+                    reject(); // Reject the promise if an error occurs
+                }
+            });
+        });
+    }
+    //Edit Balance
+
+    function updateBalance(s,f) {
+        return new Promise(function (resolve, reject) {
+
+            BalanceShow().then(function () {
+
+                var type = $('#popuptransactiontype').val();
+                var temp1= parseFloat(s);
+                var temp2 = parseFloat(f);
+
+
+                if (type === 'Cash') {
+                    var amount = temp1-temp2;
+                    amount = OriginalCash + amount;
+
+                    // Make the AJAX request with the updated values
+                    $.ajax({
+                        url: '/Donation/BalanceUpdate',
+                        type: 'POST',
+                        data: {
+                            _id: 1,
+                            _CashBalance: amount,
+                            _BankBalance: OriginalBank,
+                            _MoneyGoingIn: OriginalCashIn,
+                            _MoneyPaidOut: OriginalCashOut
+                        },
+                        success: function () {
+
+                            BalanceShow().then(resolve); // Resolve the promise after updating the balance
+                            closeCashModal();
+                        },
+                        error: function () {
+                            reject(); // Reject the promise if an error occurs
+                        }
+                    });
+                } else {
+                    
+                    var amount = temp1 - temp2;
+                    amount = OriginalBank + amount;
+
+                    $.ajax({
+                        url: '/Donation/BalanceUpdate',
+                        type: 'POST',
+                        data: {
+                            _id: 1,
+                            _CashBalance: OriginalCash,
+                            _BankBalance: amount,
+                            _MoneyGoingIn: OriginalCashIn,
+                            _MoneyPaidOut: OriginalCashOut
+                        },
+                        success: function () {
+                            cleartextbox();
+                            BalanceShow().then(resolve); // Resolve the promise after updating the balance
+                            closeBankModal();
+                        },
+                        error: function () {
+                            reject(); // Reject the promise if an error occurs
+                        }
+                    });
+                }
+            });
+        });
+    }
+    function DonationExport() {
+        var startingDate = $('#startingDate').val();
+        var endingDate = $('#endingDate').val();
+
+        if (startingDate === "" || endingDate === "") {
+            alert("Please enter both start date and end date.");
+            return;
+        }
+        $.ajax({
+            url: '/Donation/DonationExport',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8;',
+            data: {
+                startingDate: startingDate,
+                endingDate: endingDate
+            },
+            success: function (result) {
+                var object = '';
+                var count = 0;
+                $.each(result, function (index, item) {
+                    object += '<tr>';
+                    object += '<td>$' + item._Amount + '</td>';
+                    object += '<td>$' + item._Fees + '</td>';
+                    object += '<td>' + item._Intention + '</td>';
+                    object += '<td><a href="#" id="IconButtonEdit" class="btn btn-primary fa-solid" onclick="editDonation(' + item._id + ')"><i class="fa fa-pen" aria-hidden="true"></i></a><a href="#"  id="IconButtonDel" class="btn btn-danger fa-solid" onclick="deleteDonation(' + item._id + ' )"><i class="fa fa-trash" aria-hidden="true"></i></a></td>';
+                    object += '</tr>';
+                    count++;
+                });
+                $('#table_data').html(object);
+                if (count > 7) {
+                    pagination();
+                }
+
+
+
+            },
+            error: function () {
+
+            }
+
+        });
+
+    }
+
+    //Index Donation
+    function DonationShow() {
+
+        $.ajax({
+           
+            url: '/Donation/DonationIndex',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8;',
+            success: function (result) {
+                var object = '';
+                var count = 0;
+                $.each(result, function (index, item) {
+                    object += '<tr>';
+                    object += '<td>' + item._Amount + '</td>';
+                    object += '<td>' + item._Fees + '</td>';
+                    object += '<td>' + item._Intention+ '</td>';
+                    object += '<td>' + item._Type + '</td>';
+                    object += '<td><a href="#" id="IconButtonEdit" class="btn btn-primary fa-solid" onclick="editDonation(' + item._id + ')"><i class="fa fa-pen" aria-hidden="true"></i></a><a href="#"  id="IconButtonDel" class="btn btn-danger fa-solid" onclick="deleteDonation(' + item._id + ' )"><i class="fa fa-trash" aria-hidden="true"></i></a></td>';
+                    object += '</tr>';
+                    count++;
+                });
+                $('#table_data').html(object);
+                    if(count > 6) {
+                        pagination();
+                    }
+
+                BalanceShow();
+
+    
+    
+            },          
+            error: function () {
+ 
+            }
+            
+        });
+        
+    }
+    //Pagination
+    function pagination(){
+        var table = $('#myTable');
+        var rowsPerPage = 5; // Number of rows to show per page
+
+        var totalRows = table.find('tbody tr').length;
+        if (totalRows <= rowsPerPage) {
+            // No need for pagination if the total rows do not exceed the limit
+            return;
+        }
+
+        var totalPages = Math.ceil(totalRows / rowsPerPage);
+
+        // Clear existing pagination links
+        $('#pagination').empty();
+
+        for (var i = 1; i <= totalPages; i++) {
+            $('#pagination').append('<li class="page-item"><a class="page-link" href="#">' + i + '</a></li>');
+        }
+
+        // Show the first page by default
+        showPage(1);
+
+        // Handle click event on pagination links
+        $('#pagination').on('click', 'li.page-item', function () {
+            var pageNumber = $(this).text();
+            showPage(pageNumber);
+        });
+
+        function showPage(pageNumber) {
+            var startIndex = (pageNumber - 1) * rowsPerPage;
+            var endIndex = startIndex + rowsPerPage;
+            table.find('tbody tr').hide().slice(startIndex, endIndex).show();
+
+            // Update active state of pagination links
+            $('#pagination li.page-item').removeClass('active');
+            $('#pagination li.page-item:eq(' + (pageNumber - 1) + ')').addClass('active');
+        }
+    }
+    //Create Donation
+
+    $('#addDonationid').click(function () {
+        $('#AddDonationBTN').show();
+        $('#UpdateDonationBTN').hide();
+        $('#Donationheading').text('Add Donation');
+        createDonation();
+    })
+
+    function createDonation() {
+        cleartextbox();
+        $('#createDonationWindow').modal('show');
+    }
+    function closeModal() {
+        $('#createDonationWindow').modal('hide');
+    }
+    function cleartextbox() {
+        //$('#popupId').val('');
+        $('#popupAmount').val('');
+        $('#popupFees').val('');
+        $('#transactiontype').val('');
+        $('#popupIntention').val('');
+
+    }
+
+    function saveDonation() {
+
+        var Amount = $('#popupAmount').val();
+        var Fees = $('#popupFees').val();
+        var Intention = $('#popupIntention').val();      
+        var type = $('#popuptransactiontype').val();
+        
+
+        $.ajax({
+            url: '/Donation/Create',
+            type: 'POST',
+            data: {
+                _Amount: Amount,
+                _Fees: Fees,
+                _Intention: Intention,
+                _Type: type
+            },
+
+            success: function () {
+                DonationShow();
+                closeModal();
+                
+            },
+            error: function () {
+                alert("Failed!");
+            }
+        });
+    }
+
+    //Delete Donation
+    function deleteDonation(id) {
+        if (confirm('Are you sure you want to remove this Donation?')) {
+            $.ajax({
+                url: '/Donation/Delete?id=' + id,
+                success: function () {
+                    DonationShow();
+                },
+                error: function () {
+                    alert("Removal Failed");
+                }
+            });
+        }
+
+
+    }
+    //View Donation
+    function viewDonation(id) {
+        $.ajax({
+            url: '/Donation/Edit?id=' + id,
+            type: 'GET',
+            success: function (response) {
+                createDonation();
+                $('#popupId').val(response._id);
+                $('#popupAmount').val(response._Amount);
+                $('#popupFees').val(response._Fees);
+                $('#popupIntention').val(response._Intention);
+                $('#transactiontype').val(response._Type);
+                //can work with both css and hide function---same result
+                //$('#AddDonationBTN').css('display','none');
+                //$('#UpdateDonationBTN').css('display', 'block');
+
+                $('#AddDonationBTN').hide();
+                $('#UpdateDonationBTN').hide();
+                $('#CloseDonationBTN').show();
+                $('#Donationheading').text('Donation Information');
+                DonationShow();
+            },
+            error: function () {
+                alert("Update Failed");
+            }
+        });
+    }
+    //Edit Donation
+    function editDonation(id) {
+        $.ajax({
+            url: '/Donation/Edit?id=' + id,
+            type: 'GET',
+            success: function (response) {
+                createDonation();
+                $('#popupId').val(response._id);
+                $('#popupAmount').val(response._Amount);
+                $('#popupFees').val(response._Fees);
+                $('#popupIntention').val(response._Intention);
+                $('#popuptransactiontype').val(response._Type);
+                //can work with both css and hide function---same result
+                //$('#AddDonationBTN').css('display','none');
+                //$('#UpdateDonationBTN').css('display', 'block');
+
+                $('#AddDonationBTN').hide();
+                $('#UpdateDonationBTN').show();
+                $('#Donationheading').text('Update Donation');
+                DonationShow();
+            },
+            error: function () {
+                alert("Update Failed");
+            }
+        });
+    }
+
+    function updateDonation() {
+
+        var id = $('#popupId').val();
+        var Amount = $('#popupAmount').val();
+        var Fees = $('#popupFees').val();
+        var Intention = $('#popupIntention').val();
+        var type = $('#transactiontype').val();
+
+        $.ajax({
+            url: '/Donation/Update',
+            type: 'POST',
+            data: {
+                _id: id,
+                _Amount: Amount,
+                _Fees: Fees,
+                _Intention: Intention,
+                _Type: type
+
+            },
+            success: function () {
+                cleartextbox();
+                DonationShow();
+                closeModal();
+            },
+            error: function () {
+                alert("Failed!");
+            }
+        });
+    }
+
+</script>
